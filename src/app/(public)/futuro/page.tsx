@@ -46,7 +46,7 @@ export default function FuturoPage() {
       {/* Philosophy */}
       <SectionReveal delay={0.05}>
         <div className="mb-12 rounded-lg border border-accent/20 bg-accent-glow p-8">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-3">Filosofía</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-3">Filosofía</p>
           <p className="text-text-primary leading-relaxed text-lg">{ledRoadmap.summary}</p>
         </div>
       </SectionReveal>
@@ -65,7 +65,7 @@ export default function FuturoPage() {
             </p>
           </div>
           <div className="rounded-lg border border-accent/30 bg-accent-glow p-6">
-            <p className="font-mono text-xs text-accent mb-3">Fase futura (año 3+)</p>
+            <p className="font-mono text-xs text-text-muted mb-3">Fase futura (año 3+)</p>
             <h3 className="font-display text-xl font-bold text-text-primary mb-2">
               {ledRoadmap.futurePhase}
             </h3>
@@ -86,7 +86,7 @@ export default function FuturoPage() {
       {/* Component status */}
       <SectionReveal>
         <div className="mb-12">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-6">
+          <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-6">
             Estado de preparación por componente
           </p>
           <div className="overflow-hidden rounded-lg border border-border">
@@ -130,7 +130,7 @@ export default function FuturoPage() {
       {/* Comparison table */}
       <SectionReveal>
         <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-6">
+          <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-6">
             Comparativa: Valla convencional vs Pantalla LED
           </p>
           <div className="overflow-hidden rounded-lg border border-border">
@@ -139,7 +139,7 @@ export default function FuturoPage() {
                 <tr className="border-b border-border bg-bg-elevated">
                   <th className="px-4 py-3 text-left font-mono text-xs text-text-muted w-1/4">Aspecto</th>
                   <th className="px-4 py-3 text-left font-mono text-xs text-text-muted w-[37.5%]">Fase actual</th>
-                  <th className="px-4 py-3 text-left font-mono text-xs text-accent w-[37.5%]">Fase LED</th>
+                  <th className="px-4 py-3 text-left font-mono text-xs text-text-muted w-[37.5%]">Fase LED</th>
                 </tr>
               </thead>
               <tbody>

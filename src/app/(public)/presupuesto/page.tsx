@@ -64,7 +64,7 @@ export default function PresupuestoPage() {
           <SectionReveal key={category.id} delay={i * 0.05}>
             <div className="mb-10">
               <div className="mb-3 flex items-center justify-between">
-                <p className="font-mono text-xs uppercase tracking-widest text-accent">
+                <p className="font-mono text-xs uppercase tracking-widest text-text-muted">
                   {category.name}
                 </p>
                 <span className="font-mono text-sm text-text-secondary">

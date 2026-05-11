@@ -30,70 +30,82 @@ export default function HomePage() {
   return (
     <>
       {/* ─── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative flex min-h-[94vh] flex-col justify-end border-b border-border px-6 pb-20 pt-32 overflow-hidden">
+      <section
+        className="relative flex min-h-[94vh] flex-col justify-end overflow-hidden px-6 pb-20 pt-32"
+        style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+      >
+        {/* Grain texture */}
+        <div className="grain pointer-events-none absolute inset-0" />
+
         {/* Background grid texture */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.035]"
+          className="pointer-events-none absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(var(--color-border-dim) 1px, transparent 1px), linear-gradient(90deg, var(--color-border-dim) 1px, transparent 1px)",
+              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
+            opacity: 0.035,
           }}
         />
 
         {/* Ambient glow — top left */}
         <div
-          className="pointer-events-none absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full opacity-[0.07]"
-          style={{ background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)" }}
-        />
-
-        {/* Ambient glow — bottom right */}
-        <div
-          className="pointer-events-none absolute -bottom-20 right-0 h-[400px] w-[500px] rounded-full opacity-[0.05]"
-          style={{ background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)" }}
+          className="pointer-events-none absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full"
+          style={{ background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)", opacity: 0.07 }}
         />
 
         <div className="relative mx-auto w-full max-w-7xl">
           {/* Status */}
           <div className="mb-10 flex items-center gap-3">
             <StatusBadge status="in_progress" />
-            <span className="font-mono text-xs text-text-muted">·</span>
-            <span className="font-mono text-xs text-text-muted">Guatemala — {PROJECT.startDate}</span>
+            <span className="font-mono text-xs" style={{ color: "var(--text-muted)" }}>·</span>
+            <span className="font-mono text-xs" style={{ color: "var(--text-muted)" }}>
+              Guatemala — {PROJECT.startDate}
+            </span>
           </div>
 
           {/* Main heading */}
-          <h1 className="font-display font-bold leading-[0.92] text-text-primary"
-            style={{ fontSize: "clamp(3.5rem, 10vw, 7.5rem)" }}>
+          <h1
+            className="font-display font-bold text-text-primary"
+            style={{ fontSize: 124, letterSpacing: "-0.04em", lineHeight: 0.92 }}
+          >
             Infraestructura
             <br />
-            <span className="relative inline-block text-accent">
-              Publicitaria
-              {/* Subtle glow behind accent word */}
-              <span
-                className="pointer-events-none absolute inset-0 -z-10 blur-3xl opacity-20"
-                style={{ background: "var(--accent)" }}
-                aria-hidden="true"
-              />
-            </span>
+            Publicitaria
             <br />
             Premium
           </h1>
 
           {/* Separator */}
-          <div className="mt-10 h-px w-16 bg-accent/40" />
+          <div
+            style={{
+              marginTop: 48,
+              height: 1,
+              width: 72,
+              background: "rgba(184,148,90,0.35)",
+            }}
+          />
 
           <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <p className="max-w-lg text-text-secondary leading-relaxed text-[15px]">
+            <p className="max-w-lg leading-relaxed" style={{ fontSize: 15, color: "var(--text-secondary)" }}>
               {PROJECT.summary}
             </p>
             <div className="shrink-0 sm:text-right">
-              <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-1.5">
+              <p
+                className="font-mono uppercase"
+                style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--text-muted)", marginBottom: 6 }}
+              >
                 Inversión estimada
               </p>
-              <p className="font-display text-3xl font-bold text-text-primary">
+              <p
+                className="font-display font-bold"
+                style={{ fontSize: 36, letterSpacing: "-0.02em", color: "var(--text-primary)", lineHeight: 1 }}
+              >
                 {formatRange(keyMetrics.investmentMin, keyMetrics.investmentMax, keyMetrics.currency)}
               </p>
-              <p className="font-mono text-xs text-text-muted mt-1">Quetzales guatemaltecos</p>
+              <p className="font-mono" style={{ fontSize: 10, color: "var(--text-muted)", marginTop: 4 }}>
+                Quetzales guatemaltecos
+              </p>
             </div>
           </div>
         </div>
@@ -101,9 +113,15 @@ export default function HomePage() {
 
       {/* ─── Metrics Band ─────────────────────────────────────────────────── */}
       <SectionReveal>
-        <section className="border-b border-border px-6 py-10">
+        <section
+          className="px-6"
+          style={{ padding: "56px 24px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+        >
           <div className="mx-auto max-w-7xl">
-            <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-6">
+            <p
+              className="font-mono uppercase"
+              style={{ fontSize: 10.5, letterSpacing: "0.22em", color: "var(--text-muted)", marginBottom: 24 }}
+            >
               Parámetros clave del proyecto
             </p>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
@@ -130,7 +148,6 @@ export default function HomePage() {
                 value="Q 12,000"
                 unit=""
                 description="Escenario base"
-                accent
               />
               <MetricCard
                 label="Recuperación estimada"
@@ -146,29 +163,68 @@ export default function HomePage() {
 
       {/* ─── Project Snapshot ─────────────────────────────────────────────── */}
       <SectionReveal delay={0.1}>
-        <section className="border-b border-border px-6 py-16">
+        <section
+          className="px-6"
+          style={{ padding: "96px 24px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+        >
           <div className="mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
               <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+                <p
+                  className="font-mono uppercase"
+                  style={{ fontSize: 10.5, letterSpacing: "0.22em", color: "var(--text-muted)", marginBottom: 14 }}
+                >
                   Estrategia
                 </p>
-                <h2 className="font-display text-3xl font-bold text-text-primary mb-4">
-                  Construir sólido hoy.<br />Escalar inteligente mañana.
+                <h2
+                  className="font-display font-bold"
+                  style={{ fontSize: 32, letterSpacing: "-0.02em", lineHeight: 1.15, color: "var(--text-primary)", marginBottom: 16 }}
+                >
+                  Construir sólido hoy.
+                  <br />
+                  Escalar inteligente mañana.
                 </h2>
-                <p className="text-text-secondary leading-relaxed mb-6">{PROJECT.vision}</p>
+                <p style={{ color: "var(--text-secondary)", lineHeight: 1.65, fontSize: 15, marginBottom: 24 }}>
+                  {PROJECT.vision}
+                </p>
                 <Link
                   href="/proyecto"
-                  className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-accent hover:text-text-primary transition-colors"
+                  className="font-mono uppercase inline-flex items-center"
+                  style={{
+                    fontSize: 11,
+                    letterSpacing: "0.12em",
+                    color: "var(--text-secondary)",
+                    borderBottom: "1px solid rgba(255,255,255,0.14)",
+                    paddingBottom: 3,
+                    transition: "color 150ms ease-in-out",
+                  }}
                 >
                   Ver descripción completa →
                 </Link>
               </div>
-              <div className="space-y-3">
-                {PROJECT.highlights.map((h) => (
-                  <div key={h} className="flex gap-3 rounded-md border border-border bg-bg-card px-4 py-3">
-                    <span className="text-accent text-xs mt-0.5 shrink-0">◈</span>
-                    <p className="text-sm text-text-secondary">{h}</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                {PROJECT.highlights.map((h, i) => (
+                  <div
+                    key={h}
+                    style={{
+                      display: "flex",
+                      gap: 16,
+                      borderRadius: 8,
+                      border: "1px solid rgba(255,255,255,0.07)",
+                      background: "var(--bg-card)",
+                      padding: "12px 16px",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <span
+                      className="font-mono"
+                      style={{ fontSize: 10.5, color: "var(--text-muted)", flexShrink: 0, marginTop: 2, minWidth: 20 }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55, margin: 0 }}>
+                      {h}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -179,33 +235,87 @@ export default function HomePage() {
 
       {/* ─── Section Links Grid ────────────────────────────────────────────── */}
       <SectionReveal delay={0.05}>
-        <section className="px-6 py-16">
+        <section style={{ padding: "80px 24px" }}>
           <div className="mx-auto max-w-7xl">
-            <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-8">
+            <p
+              className="font-mono uppercase"
+              style={{ fontSize: 10.5, letterSpacing: "0.22em", color: "var(--text-muted)", marginBottom: 32 }}
+            >
               Explorar el proyecto
             </p>
-            <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 rounded-lg overflow-hidden">
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+              style={{ gap: 16 }}
+            >
               {SECTION_LINKS.map((section) => (
-                <Link
-                  key={section.href}
-                  href={section.href}
-                  className="group flex flex-col gap-3 bg-bg-card px-5 py-5 hover:bg-bg-subtle transition-colors"
-                >
-                  <span className="font-mono text-xs text-text-muted">{section.eyebrow}</span>
-                  <div>
-                    <p className="font-semibold text-text-primary group-hover:text-accent transition-colors">
-                      {section.label}
-                    </p>
-                    <p className="mt-1 text-xs text-text-muted leading-relaxed">
-                      {section.description}
-                    </p>
-                  </div>
-                </Link>
+                <SectionLinkCard key={section.href} {...section} />
               ))}
             </div>
           </div>
         </section>
       </SectionReveal>
     </>
+  )
+}
+
+function SectionLinkCard({
+  href,
+  label,
+  description,
+  eyebrow,
+}: {
+  href: string
+  label: string
+  description: string
+  eyebrow: string
+}) {
+  return (
+    <Link
+      href={href}
+      className="group relative flex flex-col"
+      style={{
+        minHeight: 132,
+        padding: 24,
+        borderRadius: 10,
+        border: "1px solid rgba(255,255,255,0.07)",
+        background: "var(--bg-card)",
+        transition: "border-color 150ms ease-in-out, background 150ms ease-in-out",
+      }}
+      onMouseEnter={(e) => {
+        const el = e.currentTarget as HTMLElement
+        el.style.border = "1px solid rgba(255,255,255,0.14)"
+        el.style.background = "var(--bg-subtle)"
+      }}
+      onMouseLeave={(e) => {
+        const el = e.currentTarget as HTMLElement
+        el.style.border = "1px solid rgba(255,255,255,0.07)"
+        el.style.background = "var(--bg-card)"
+      }}
+    >
+      <p
+        className="font-mono uppercase"
+        style={{ fontSize: 10.5, letterSpacing: "0.18em", color: "var(--text-muted)", marginBottom: 12 }}
+      >
+        {eyebrow}
+      </p>
+      <p style={{ fontSize: 16, fontWeight: 600, color: "var(--text-primary)", marginBottom: 6, lineHeight: 1.3 }}>
+        {label}
+      </p>
+      <p style={{ fontSize: 12, color: "var(--text-muted)", lineHeight: 1.55, margin: 0 }}>
+        {description}
+      </p>
+      <span
+        style={{
+          position: "absolute",
+          right: 20,
+          bottom: 20,
+          fontSize: 14,
+          color: "var(--text-muted)",
+          transition: "color 150ms ease-in-out",
+        }}
+      >
+        →
+      </span>
+    </Link>
   )
 }

@@ -24,7 +24,7 @@ export default function TerrenoPage() {
       {/* Advantage callout */}
       <SectionReveal delay={0.05}>
         <div className="mb-12 rounded-lg border border-accent/20 bg-accent-glow px-6 py-5">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-2">
+          <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-2">
             Ventaja estratégica
           </p>
           <p className="text-text-primary leading-relaxed">{TERRAIN.overview.advantage}</p>
@@ -47,7 +47,7 @@ export default function TerrenoPage() {
       {/* Visibility */}
       <SectionReveal>
         <div className="mb-12">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+          <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">
             Análisis de visibilidad
           </p>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-4">
@@ -61,7 +61,7 @@ export default function TerrenoPage() {
       {/* Access */}
       <SectionReveal>
         <div className="mb-12">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+          <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">
             Acceso y servicios
           </p>
           <DataTable
@@ -73,7 +73,7 @@ export default function TerrenoPage() {
       {/* Interventions */}
       <SectionReveal>
         <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+          <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">
             Intervenciones requeridas
           </p>
           <div className="space-y-4">

@@ -15,7 +15,7 @@ const RELEVANCE_COLOR = {
 const CATEGORY_COLOR: Record<string, string> = {
   Estructural: "text-info-text",
   Normativo: "text-warning-text",
-  Mercado: "text-accent",
+  Mercado: "text-text-muted",
   "Tecnología LED": "text-success-text",
   Financiero: "text-text-secondary",
 }
@@ -58,7 +58,7 @@ export default function InvestigacionPage() {
 
               <div className="mt-4 flex items-center justify-between">
                 <span className="font-mono text-xs text-text-muted">{article.date}</span>
-                <span className="font-mono text-xs text-accent group-hover:text-text-primary transition-colors">
+                <span className="font-mono text-xs text-text-muted group-hover:text-text-secondary transition-colors">
                   Leer →
                 </span>
               </div>

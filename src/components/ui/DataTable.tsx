@@ -8,30 +8,48 @@ interface DataRow {
 interface DataTableProps {
   rows: DataRow[]
   className?: string
+  dense?: boolean
 }
 
-export function DataTable({ rows, className = "" }: DataTableProps) {
+export function DataTable({ rows, className = "", dense = false }: DataTableProps) {
+  const px = dense ? "px-4 py-2.5" : "px-[18px] py-[14px]"
   return (
-    <div className={`overflow-hidden rounded-lg border border-border ${className}`}>
-      <table className="w-full">
+    <div
+      className={`overflow-hidden rounded-[10px] ${className}`}
+      style={{ border: "1px solid rgba(255,255,255,0.07)" }}
+    >
+      <table className="w-full" style={{ borderCollapse: "collapse" }}>
         <tbody>
           {rows.map((row, i) => (
             <tr
               key={row.label}
-              className={`border-b border-border last:border-0 ${
-                i % 2 === 0 ? "bg-bg-card" : "bg-bg-elevated"
-              }`}
+              style={{
+                background: i % 2 === 0 ? "var(--bg-card)" : "var(--bg-elevated)",
+                borderBottom: i < rows.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
+              }}
             >
-              <td className="px-4 py-3 w-1/2">
-                <span className="text-sm text-text-secondary">{row.label}</span>
+              <td className={`${px} w-1/2`}>
+                <span style={{ fontSize: 13, color: "var(--text-secondary)" }}>{row.label}</span>
                 {row.notes && (
-                  <p className="text-xs text-text-muted mt-0.5 leading-relaxed">{row.notes}</p>
+                  <p style={{ fontSize: 11, color: "var(--text-muted)", margin: "2px 0 0 0", lineHeight: 1.5 }}>
+                    {row.notes}
+                  </p>
                 )}
               </td>
-              <td className="px-4 py-3 text-right">
-                <span className="font-mono text-sm font-medium text-text-primary">{row.value}</span>
+              <td className={`${px} text-right`}>
+                <span
+                  className="font-mono"
+                  style={{ fontSize: 13, color: "var(--text-primary)", fontWeight: 500 }}
+                >
+                  {row.value}
+                </span>
                 {row.unit && (
-                  <span className="font-mono text-xs text-text-muted ml-1">{row.unit}</span>
+                  <span
+                    className="font-mono"
+                    style={{ fontSize: 11, color: "var(--text-muted)", marginLeft: 4 }}
+                  >
+                    {row.unit}
+                  </span>
                 )}
               </td>
             </tr>

@@ -38,7 +38,7 @@ export default function ProveedoresPage() {
       {Object.entries(bySpecialty).map(([specialty, suppliers], i) => (
         <SectionReveal key={specialty} delay={i * 0.05}>
           <div className="mb-10">
-            <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">
               {specialty}
             </p>
             <div className="space-y-3">

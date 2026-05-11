@@ -169,7 +169,7 @@ export default async function ArticlePage({ params }: Props) {
 
         <div className="mb-8">
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="font-mono text-xs text-accent">{article.category}</span>
+            <span className="font-mono text-xs text-text-muted">{article.category}</span>
             <span className="font-mono text-xs text-text-muted">·</span>
             <span className="font-mono text-xs text-text-muted">{article.relevance} relevancia</span>
             <span className="font-mono text-xs text-text-muted">·</span>
@@ -245,7 +245,7 @@ export default async function ArticlePage({ params }: Props) {
                   <ul className="space-y-1.5 pl-1">
                     {listItems.map((item, li) => (
                       <li key={li} className="flex gap-2.5 text-sm text-text-secondary leading-relaxed">
-                        <span className="text-accent shrink-0 mt-0.5">·</span>
+                        <span className="text-text-muted shrink-0 mt-0.5">·</span>
                         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: controlled static content */}
                         <span dangerouslySetInnerHTML={{
                           __html: item.replace(/\*\*(.*?)\*\*/g, "<strong class='text-text-primary'>$1</strong>"),
@@ -265,7 +265,7 @@ export default async function ArticlePage({ params }: Props) {
                 <ol key={i} className="space-y-2 pl-1 counter-reset-item">
                   {numberedItems.map((item, li) => (
                     <li key={li} className="flex gap-2.5 text-sm text-text-secondary leading-relaxed">
-                      <span className="font-mono text-xs text-accent shrink-0 mt-0.5 w-4">{li + 1}.</span>
+                      <span className="font-mono text-xs text-text-muted shrink-0 mt-0.5 w-4">{li + 1}.</span>
                       {/* biome-ignore lint/security/noDangerouslySetInnerHtml: controlled static content */}
                       <span dangerouslySetInnerHTML={{
                         __html: item.replace(/^\d+\.\s/, "").replace(/\*\*(.*?)\*\*/g, "<strong class='text-text-primary'>$1</strong>"),

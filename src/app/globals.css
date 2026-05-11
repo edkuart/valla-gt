@@ -20,9 +20,11 @@
   --text-secondary: #8a8790;
   --text-muted: #4a4850;
 
-  /* Borders */
-  --border: #1f1f24;
-  --border-dim: #2a2a30;
+  /* Borders — white alpha system */
+  --border: rgba(255, 255, 255, 0.07);
+  --border-dim: rgba(255, 255, 255, 0.14);
+  --border-separator: rgba(255, 255, 255, 0.04);
+  --border-featured: rgba(184, 148, 90, 0.28);
 
   /* Semantic */
   --success: #2d6a4f;
@@ -55,6 +57,8 @@
 
   --color-border: var(--border);
   --color-border-dim: var(--border-dim);
+  --color-border-separator: var(--border-separator);
+  --color-border-featured: var(--border-featured);
 
   --color-success: var(--success);
   --color-success-text: var(--success-text);
@@ -145,6 +149,16 @@ body {
   font-family: var(--font-jetbrains), ui-monospace, monospace;
 }
 
+/* ─── Grain noise (hero only) ───────────────────────────────────────────────── */
+
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+}
+
 /* ─── Reduced motion ────────────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
@@ -174,7 +188,9 @@ body {
     --text-secondary: #3a3a3a;
     --text-muted: #666666;
     --border: #d4d4d4;
-    --border-dim: #c0c0c0;
+    --border-dim: #b8b8b8;
+    --border-separator: #e8e8e8;
+    --border-featured: rgba(138, 106, 48, 0.40);
     --success: #d4edda;
     --success-text: #1a6b3a;
     --warning: #fff3cd;

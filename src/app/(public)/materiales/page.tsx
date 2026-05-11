@@ -22,7 +22,7 @@ export default function MaterialesPage() {
       {MATERIALS.map((category, i) => (
         <SectionReveal key={category.id} delay={i * 0.05}>
           <div className="mb-14">
-            <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">
               {category.name}
             </p>
             <div className="overflow-hidden rounded-lg border border-border">

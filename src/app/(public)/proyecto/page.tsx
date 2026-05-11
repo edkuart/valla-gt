@@ -72,7 +72,7 @@ export default function ProyectoPage() {
       <SectionReveal>
         <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-2">
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">Visión</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">Visión</p>
             <h2 className="font-display text-2xl font-bold text-text-primary mb-4">
               Estrategia de largo plazo
             </h2>
@@ -82,14 +82,32 @@ export default function ProyectoPage() {
             </p>
           </div>
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">
               Ventajas clave
             </p>
-            <div className="space-y-2.5">
-              {PROJECT.highlights.map((h) => (
-                <div key={h} className="flex gap-3 rounded-md border border-border bg-bg-card px-4 py-3">
-                  <span className="text-accent text-xs mt-0.5 shrink-0">◈</span>
-                  <p className="text-sm text-text-secondary">{h}</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {PROJECT.highlights.map((h, i) => (
+                <div
+                  key={h}
+                  style={{
+                    display: "flex",
+                    gap: 16,
+                    borderRadius: 8,
+                    border: "1px solid rgba(255,255,255,0.07)",
+                    background: "var(--bg-card)",
+                    padding: "12px 16px",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <span
+                    className="font-mono"
+                    style={{ fontSize: 10.5, color: "var(--text-muted)", flexShrink: 0, marginTop: 2, minWidth: 20 }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55, margin: 0 }}>
+                    {h}
+                  </p>
                 </div>
               ))}
             </div>
@@ -145,7 +163,7 @@ export default function ProyectoPage() {
           <div className="mt-4 text-right">
             <Link
               href="/futuro"
-              className="font-mono text-xs uppercase tracking-widest text-accent hover:text-text-primary transition-colors"
+              className="font-mono text-xs uppercase tracking-widest text-text-secondary hover:text-text-primary transition-colors"
             >
               Ver plan completo →
             </Link>

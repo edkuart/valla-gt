@@ -107,7 +107,7 @@ export default function GaleriaPage() {
             <div className="mb-5 flex items-baseline gap-3">
               <span className="font-mono text-xs text-text-muted">{cat.eyebrow}</span>
               <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-accent">
+                <p className="font-mono text-xs uppercase tracking-widest text-text-muted">
                   {cat.label}
                 </p>
                 <p className="text-xs text-text-muted mt-0.5">{cat.description}</p>
