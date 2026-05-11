@@ -68,7 +68,7 @@ export default function HomePage() {
           {/* Main heading */}
           <h1
             className="font-display font-bold text-text-primary"
-            style={{ fontSize: 124, letterSpacing: "-0.04em", lineHeight: 0.92 }}
+            style={{ fontSize: "clamp(1.75rem, 9vw, 7.75rem)", letterSpacing: "-0.04em", lineHeight: 0.92 }}
           >
             Infraestructura
             <br />
