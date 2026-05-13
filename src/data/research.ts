@@ -53,6 +53,17 @@ export const RESEARCH_ARTICLES: ResearchArticle[] = [
     readingMinutes: 7,
   },
   {
+    slug: "normativa-legal-guatemala",
+    title: "Marco Legal y Normativo — Valla Publicitaria en Salcajá, Quetzaltenango",
+    summary:
+      "Análisis completo del marco regulatorio aplicable al proyecto: Constitución de Guatemala, Decreto 34-2003 (Ley de Anuncios), requisitos del CIG, DGAC, y estado actual de la normativa municipal de Salcajá. Incluye mapa de trámites y vacíos identificados.",
+    category: "Normativo",
+    relevance: "Alta",
+    source: "Congreso de Guatemala / CIG / Municipalidad de Salcajá / DGAC — Investigación directa Mayo 2026",
+    date: "Mayo 2026",
+    readingMinutes: 10,
+  },
+  {
     slug: "led-vs-convencional",
     title: "Pantalla LED vs Valla Convencional: Análisis Financiero Comparativo para el Mercado Guatemalteco",
     summary:

@@ -18,6 +18,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: article?.title ?? "Investigación" }
 }
 
+function renderInline(text: string): string {
+  return text
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g,
+      "<a href='$2' target='_blank' rel='noopener noreferrer' style='color:var(--accent);border-bottom:1px solid rgba(184,148,90,0.3);text-decoration:none;'>$1</a>")
+    .replace(/\*\*(.*?)\*\*/g, "<strong style='color:var(--text-primary)'>$1</strong>")
+}
+
 const ARTICLE_CONTENT: Record<string, string> = {
   "mercado-ooh-guatemala": `
 El mercado de publicidad Out-of-Home (OOH) en Guatemala ha experimentado un crecimiento sostenido en los últimos años, impulsado por la expansión urbana, el aumento del tráfico vehicular y la preferencia de marcas nacionales e internacionales por medios de alto impacto visual.
@@ -107,6 +114,92 @@ El terreno inclinado presenta desafíos específicos para cimentaciones de estru
 **Sobredimensionamiento para conversión LED**
 
 Para preparar la cimentación para futura carga LED, se recomienda diseñarla para el 250% de la carga estructural actual. Una pantalla LED de 54 m² puede pesar 3,500 – 5,000 kg adicionales, más las cargas de viento que son significativamente mayores en superficies cerradas vs. carteleras con luz perimetral.
+`,
+  "normativa-legal-guatemala": `
+Este documento consolida la investigación legal realizada en mayo 2026 sobre el marco regulatorio aplicable a la instalación de una valla publicitaria metálica de 12 metros en el municipio de Salcajá, Quetzaltenango. La información fue obtenida directamente de fuentes oficiales del Estado guatemalteco, el Colegio de Ingenieros y la municipalidad correspondiente.
+
+**Base Constitucional**
+
+La potestad para regular la publicidad exterior en Guatemala se sustenta en tres artículos de la [Constitución Política de la República de Guatemala](https://www.idpp.gob.gt/images/Biblioteca-virtual/Leyes_y_Reglamentos/Constitucin_Poltica_de_la_Repblica_de_Guatemala.pdf):
+
+- **Artículo 253 — Autonomía Municipal**: "Los municipios son instituciones autónomas. Les corresponde: c) Atender los servicios públicos locales, el ordenamiento territorial de su jurisdicción y el cumplimiento de sus fines propios. Para los efectos correspondientes emitirán las ordenanzas y reglamentos respectivos." — Este artículo es el fundamento por el cual la **Municipalidad de Salcajá tiene potestad directa** para otorgar o denegar la licencia de anuncio.
+- **Artículo 254 — Gobierno Municipal**: El concejo municipal (alcalde, síndicos y concejales) es la autoridad que emite los reglamentos locales de publicidad exterior.
+- **Artículo 255 — Recursos económicos del municipio**: Las municipalidades recaudan tributos sobre los anuncios instalados en su jurisdicción, lo cual sustenta el cobro de Q30/m² establecido en el Decreto 34-2003.
+
+**Decreto 34-2003 — Ley de Anuncios en Vías Urbanas y Extraurbanas**
+
+Es la **ley nacional de referencia** que aplica a toda la República. Emitida por el Congreso de Guatemala el 16 de junio de 2003. Texto oficial disponible en [congreso.gob.gt](https://www.congreso.gob.gt/assets/uploads/info_legislativo/decretos/34-03.pdf).
+
+| Aspecto | Contenido de la Ley |
+|---|---|
+| Objeto | Regular anuncios o rótulos en vías urbanas y extraurbanas que promuevan comercialización de bienes o servicios |
+| Definición de anuncio | Todo rótulo, estructura, valla, manta o similar con objeto lucrativo o de aviso |
+| Autoridad competente | Las municipalidades en su jurisdicción. Excepción: carreteras CA y RN → Dirección General de Caminos |
+| Permiso previo obligatorio | (1) Permiso escrito del propietario del terreno + (2) Autorización municipal. Plazo máximo de respuesta: 15 días |
+| Tributo anual | Q 30.00 por metro cuadrado de anuncio. Para el proyecto (54m²): Q 1,620/año |
+| Anuncios importados | Pagan 50% adicional sobre el tributo base |
+| Distancia mínima a carretera | 12 metros desde el borde de la vía (según Dirección General de Caminos) |
+| Destino del tributo | Ornato y limpieza vial del municipio |
+
+⚠️ **Nota sobre los artículos técnicos**: los artículos específicos sobre dimensiones máximas, alturas y separación mínima entre vallas existen en el decreto pero los PDFs oficiales están encriptados. Se recomienda solicitar copia impresa en la Municipalidad de Salcajá o en la Dirección General de Caminos región occidente.
+
+**Colegio de Ingenieros de Guatemala (CIG)**
+
+Todo proyecto de valla publicitaria requiere planos estructurales firmados por un profesional colegiado activo. Requisitos documentados por el [CIG](https://www.cig.org.gt):
+
+- Planos en papel bond a escala legible
+- Firma, sello y timbre del ingeniero civil responsable
+- Constancia de colegiación activa adjunta (emitida por el CIG, vigente)
+- Aplica a toda obra mayor de 30 m²
+
+El profesional asume responsabilidad civil y penal por el cálculo estructural. Para el proyecto, se requiere un ingeniero con experiencia específica en estructuras de anuncio exterior y cimentaciones en ladera.
+
+**DGAC — Dirección General de Aeronáutica Civil**
+
+**Hallazgo crítico para Salcajá**: el municipio se encuentra aproximadamente a 5 km del [Aeropuerto La Pedrera de Quetzaltenango](https://www.dgac.gob.gt). Si el terreno está dentro del cono de aproximación del aeropuerto, se requiere un permiso adicional de la DGAC **antes de definir la altura final de la estructura**.
+
+Documentos requeridos por la DGAC para vallas publicitarias:
+
+1. Coordenadas geográficas exactas del sitio (GPS decimal)
+2. Altura máxima de la estructura sobre el nivel del suelo
+3. Declaración de si se usará grúa durante la instalación
+4. Planos firmados y sellados por profesional colegiado activo
+5. Pago de tasa de evaluación
+
+**Acción inmediata recomendada**: verificar con las coordenadas exactas del terreno en la DGAC si existe restricción de altura. Una estructura de 12m en zona sin restricción es permitida, pero dentro del cono de aproximación podría requerir reducción de altura o autorización especial.
+
+**Municipio de Salcajá — Estado Normativo Actual**
+
+| Aspecto | Hallazgo |
+|---|---|
+| POT vigente | Aprobado en Acta No. 79-2015 del Concejo Municipal (noviembre 2015) |
+| Estado del Reglamento POT | ⚠️ En revisión por técnicos y autoridades — no está finalizado |
+| Categorías de suelo definidas | Forestal, Protección Especial, Rural, Urbano, Expansión Urbana |
+| Reglamento propio de anuncios | No encontrado en internet — sin publicación digital oficial |
+| Trámites en línea | No disponibles — todo presencial en OMOT |
+| Sitio oficial | [salcaja.gob.gt](https://www.salcaja.gob.gt) |
+| Dirección municipalidad | 1ª Calle 2-28 Zona 1, Salcajá, Quetzaltenango |
+| Teléfonos | 7768-8750 / 7768-9507 |
+
+**Interpretación**: la ausencia de un reglamento municipal propio de anuncios publicado digitalmente puede significar que Salcajá aplica directamente el Decreto 34-2003 nacional, sin restricciones adicionales locales. Esto es favorable para el proyecto, pero debe confirmarse presencialmente ante la OMOT (Oficina Municipal de Ordenamiento Territorial).
+
+**Mapa de Trámites Requeridos (en orden cronológico)**
+
+1. **Verificar zona en el POT de Salcajá** — acudir a OMOT Municipalidad de Salcajá (7768-8750) y confirmar que el terreno está clasificado como zona urbana o comercial con uso permitido para publicidad exterior
+2. **Verificar cono de aproximación DGAC** — con coordenadas GPS exactas del terreno, consultar en [dgac.gob.gt](https://www.dgac.gob.gt) antes de definir la altura final de la estructura
+3. **Contratar ingeniero civil colegiado CIG** — buscar profesional con experiencia en estructuras de anuncio exterior y cimentaciones en ladera. Directorio en [cig.org.gt](https://www.cig.org.gt) y [aquienguate.com](https://www.aquienguate.com/directorio/servicios-profesionales/ingenieros-estructurales/guatemala/guatemala)
+4. **Elaborar planos estructurales** — con firma, sello y timbre del ingeniero colegiado + estudio de suelos del terreno específico
+5. **Solicitar autorización municipal** — presentar en Municipalidad de Salcajá: planos firmados, permiso del propietario del terreno, DPI del solicitante. Plazo legal de respuesta: 15 días
+6. **Trámite DGAC si aplica** — si el terreno está en zona de restricción aérea, gestionar el permiso antes de iniciar construcción
+7. **Pago de tributo anual** — Q 1,620/año (54m² × Q30) a partir del inicio de operación
+
+**Vacíos Identificados que Requieren Gestión Presencial**
+
+- Artículos técnicos exactos del Decreto 34-2003 (dimensiones máximas entre vallas, separación mínima)
+- Si la Municipalidad de Salcajá tiene reglamento de anuncios propio no publicado digitalmente
+- Tasas municipales locales adicionales al tributo nacional de Q30/m²
+- Confirmación de zona exacta del terreno en el POT y usos permitidos
+- Verificación de cono de aproximación DGAC con coordenadas GPS del terreno
 `,
   "led-vs-convencional": `
 **Valla Convencional Iluminada vs. Pantalla LED: Análisis para el Mercado Guatemalteco**
@@ -238,7 +331,7 @@ export default async function ArticlePage({ params }: Props) {
                     <p className="text-text-secondary leading-relaxed"
                       // biome-ignore lint/security/noDangerouslySetInnerHtml: controlled static content
                       dangerouslySetInnerHTML={{
-                        __html: preLines.join(" ").replace(/\*\*(.*?)\*\*/g, "<strong class='text-text-primary'>$1</strong>"),
+                        __html: renderInline(preLines.join(" ")),
                       }}
                     />
                   )}
@@ -248,7 +341,7 @@ export default async function ArticlePage({ params }: Props) {
                         <span className="text-text-muted shrink-0 mt-0.5">·</span>
                         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: controlled static content */}
                         <span dangerouslySetInnerHTML={{
-                          __html: item.replace(/\*\*(.*?)\*\*/g, "<strong class='text-text-primary'>$1</strong>"),
+                          __html: renderInline(item),
                         }} />
                       </li>
                     ))}
@@ -268,7 +361,7 @@ export default async function ArticlePage({ params }: Props) {
                       <span className="font-mono text-xs text-text-muted shrink-0 mt-0.5 w-4">{li + 1}.</span>
                       {/* biome-ignore lint/security/noDangerouslySetInnerHtml: controlled static content */}
                       <span dangerouslySetInnerHTML={{
-                        __html: item.replace(/^\d+\.\s/, "").replace(/\*\*(.*?)\*\*/g, "<strong class='text-text-primary'>$1</strong>"),
+                        __html: renderInline(item.replace(/^\d+\.\s/, "")),
                       }} />
                     </li>
                   ))}
@@ -281,7 +374,7 @@ export default async function ArticlePage({ params }: Props) {
               <p key={i} className="text-text-secondary leading-relaxed"
                 // biome-ignore lint/security/noDangerouslySetInnerHtml: controlled static content
                 dangerouslySetInnerHTML={{
-                  __html: para.replace(/\*\*(.*?)\*\*/g, "<strong class='text-text-primary'>$1</strong>"),
+                  __html: renderInline(para),
                 }}
               />
             )
