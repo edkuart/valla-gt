@@ -21,6 +21,40 @@ export default function TerrenoPage() {
         <Disclaimer text={TERRAIN.disclaimer} className="mb-12" />
       </SectionReveal>
 
+      {/* Location strip */}
+      <SectionReveal delay={0.04}>
+        <div
+          className="mb-12 grid grid-cols-2 gap-3 sm:grid-cols-4"
+        >
+          {[
+            { label: "Ruta", value: "RN-1 Carretera Interamericana" },
+            { label: "Kilómetro", value: "Km. 194" },
+            { label: "Municipio", value: "Salcajá, Quetzaltenango" },
+            { label: "Coordenadas GPS", value: "14.861560°N, 91.470278°O" },
+          ].map((item) => (
+            <div
+              key={item.label}
+              style={{
+                borderRadius: 10,
+                border: "1px solid rgba(255,255,255,0.07)",
+                background: "var(--bg-card)",
+                padding: "14px 16px",
+              }}
+            >
+              <p
+                className="font-mono uppercase"
+                style={{ fontSize: 9.5, letterSpacing: "0.16em", color: "var(--text-muted)", marginBottom: 6 }}
+              >
+                {item.label}
+              </p>
+              <p style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.3 }}>
+                {item.value}
+              </p>
+            </div>
+          ))}
+        </div>
+      </SectionReveal>
+
       {/* Advantage callout */}
       <SectionReveal delay={0.05}>
         <div className="mb-12 rounded-lg border border-accent/20 bg-accent-glow px-6 py-5">
@@ -55,6 +89,48 @@ export default function TerrenoPage() {
               <MetricCard key={v.label} label={v.label} value={v.value} unit={v.unit} description={v.notes} />
             ))}
           </div>
+        </div>
+      </SectionReveal>
+
+      {/* Surroundings */}
+      <SectionReveal>
+        <div className="mb-12">
+          <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">
+            Entorno comercial inmediato — radio 500 m
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {TERRAIN.surroundings.map((s) => (
+              <div
+                key={s.name}
+                style={{
+                  display: "flex",
+                  gap: 16,
+                  borderRadius: 8,
+                  border: "1px solid rgba(255,255,255,0.07)",
+                  background: "var(--bg-card)",
+                  padding: "12px 16px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div style={{ flex: 1 }}>
+                  <p style={{ fontSize: 13, fontWeight: 600, color: "var(--text-primary)", margin: 0, marginBottom: 2 }}>
+                    {s.name}
+                  </p>
+                  <p className="font-mono" style={{ fontSize: 10, color: "var(--accent)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: s.notes ? 4 : 0 }}>
+                    {s.type}
+                  </p>
+                  {s.notes && (
+                    <p style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>
+                      {s.notes}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 10, lineHeight: 1.5 }}>
+            Corredor de servicios automotrices, salud y alimentación — perfil de tráfico mixto: vehículos interurbanos + clientes locales. Exactamente el entorno que buscan anunciantes regionales.
+          </p>
         </div>
       </SectionReveal>
 

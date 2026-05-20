@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import {
   CartesianGrid,
   Line,
@@ -33,6 +34,12 @@ function formatGTQ(value: number) {
 }
 
 export function ROIChart({ scenarios }: ROIChartProps) {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const maxMonths = Math.max(...scenarios.map((s) => s.data.cashflowByMonth.length))
 
   const chartData = Array.from({ length: maxMonths }, (_, i) => {
@@ -44,6 +51,10 @@ export function ROIChart({ scenarios }: ROIChartProps) {
     }
     return entry
   })
+
+  if (!mounted) {
+    return <div className="h-72 w-full" aria-hidden="true" />
+  }
 
   return (
     <div className="h-72 w-full">
@@ -73,9 +84,9 @@ export function ROIChart({ scenarios }: ROIChartProps) {
               fontSize: "11px",
               color: "#e8e6e1",
             }}
-            formatter={(value) => [formatGTQ(Number(value)), ""]}
-
+            formatter={(value, name) => [formatGTQ(Number(value)), name]}
             labelFormatter={(label) => `Mes ${label}`}
+            itemSorter={(item) => -(item.value as number)}
           />
           <ReferenceLine y={0} stroke="#2a2a30" strokeDasharray="4 2" />
           {scenarios.map((s) => (

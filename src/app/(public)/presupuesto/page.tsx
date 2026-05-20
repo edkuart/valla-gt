@@ -1,8 +1,15 @@
 import { Disclaimer } from "@/components/ui/Disclaimer"
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import { SectionReveal } from "@/components/primitives/SectionReveal"
-import { BUDGET, BUDGET_META } from "@/data/budget"
+import {
+  BUDGET,
+  BUDGET_META,
+  DOUBLE_FACE_SCENARIOS,
+  OPERATING_PROTECTION_ITEMS,
+  SOLAR_POWER_SCENARIOS,
+} from "@/data/budget"
 import { formatRange, formatCurrency } from "@/lib/utils"
+import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = { title: "Presupuesto Preliminar" }
@@ -54,6 +61,125 @@ export default function PresupuestoPage() {
               )}
             </span>
           </p>
+        </div>
+      </SectionReveal>
+
+      {/* Double-face scenario */}
+      <SectionReveal delay={0.08}>
+        <div className="mb-12 grid grid-cols-1 gap-5 lg:grid-cols-[1.4fr_0.9fr]">
+          <div className="rounded-lg border border-border bg-bg-card p-6">
+            <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-accent mb-2">
+                  Escenario ampliado
+                </p>
+                <h2 className="font-display text-2xl font-bold text-text-primary">
+                  Valla doble cara
+                </h2>
+              </div>
+              <Link
+                href="/investigacion/doble-cara-costos-operacion"
+                className="font-mono text-xs uppercase tracking-widest text-text-secondary hover:text-text-primary transition-colors"
+              >
+                Ver análisis →
+              </Link>
+            </div>
+
+            <div className="overflow-hidden rounded-lg border border-border">
+              <table className="w-full text-sm">
+                <tbody>
+                  {DOUBLE_FACE_SCENARIOS.map((scenario, i) => (
+                    <tr
+                      key={scenario.name}
+                      className={`border-b border-border last:border-0 ${i % 2 === 0 ? "bg-bg-elevated" : "bg-bg-card"}`}
+                    >
+                      <td className="px-4 py-3">
+                        <p className="font-medium text-text-primary">{scenario.name}</p>
+                        <p className="text-xs text-text-muted mt-0.5">
+                          {scenario.size} · {scenario.sellableArea} vendibles
+                        </p>
+                      </td>
+                      <td className="px-4 py-3 text-right whitespace-nowrap">
+                        <span className="font-mono text-text-primary">
+                          {formatRange(scenario.min, scenario.max, "GTQ")}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="rounded-lg border border-border bg-bg-card p-6">
+            <div className="mb-5 flex items-end justify-between gap-3">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-2">
+                  Protección y autonomía
+                </p>
+                <h2 className="font-display text-xl font-bold text-text-primary">
+                  Add-ons operativos
+                </h2>
+              </div>
+              <Link
+                href="/investigacion/seguros-camaras-autonomia"
+                className="font-mono text-xs text-text-secondary hover:text-text-primary transition-colors"
+              >
+                Detalle →
+              </Link>
+            </div>
+
+            <div className="space-y-3">
+              {OPERATING_PROTECTION_ITEMS.map((item) => (
+                <div key={item.name} className="rounded-md border border-border bg-bg-elevated p-4">
+                  <div className="mb-1 flex items-center justify-between gap-3">
+                    <p className="text-sm text-text-primary">{item.name}</p>
+                    <span className="font-mono text-xs text-text-muted">{item.cadence}</span>
+                  </div>
+                  <p className="font-mono text-sm text-accent">
+                    {formatRange(item.min, item.max, "GTQ")}
+                  </p>
+                  <p className="mt-2 text-xs text-text-muted leading-relaxed">{item.notes}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </SectionReveal>
+
+      <SectionReveal delay={0.1}>
+        <div className="mb-12 rounded-lg border border-border bg-bg-card p-6">
+          <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-warning-text mb-2">
+                Energía solar
+              </p>
+              <h2 className="font-display text-2xl font-bold text-text-primary">
+                Autonomía por niveles
+              </h2>
+            </div>
+            <Link
+              href="/investigacion/energia-solar-valla-autonoma"
+              className="font-mono text-xs uppercase tracking-widest text-text-secondary hover:text-text-primary transition-colors"
+            >
+              Ver investigación →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+            {SOLAR_POWER_SCENARIOS.map((scenario) => (
+              <div key={scenario.name} className="rounded-md border border-border bg-bg-elevated p-4">
+                <p className="font-medium text-text-primary">{scenario.name}</p>
+                <p className="mt-1 text-xs text-text-muted">{scenario.load}</p>
+                <p className="mt-3 font-mono text-sm text-accent">
+                  {formatRange(scenario.min, scenario.max, "GTQ")}
+                </p>
+                <p className="mt-2 text-xs text-text-secondary leading-relaxed">
+                  {scenario.recommendation}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </SectionReveal>
 

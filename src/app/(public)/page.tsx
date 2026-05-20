@@ -125,7 +125,7 @@ export default function HomePage() {
             >
               Parámetros clave del proyecto
             </p>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
               <MetricCard
                 label="Altura de estructura"
                 value={keyMetrics.heightMeters}
@@ -133,10 +133,16 @@ export default function HomePage() {
                 description="Desde nivel de terreno"
               />
               <MetricCard
-                label="Área de cartelera"
+                label="Área por cara"
                 value={keyMetrics.faceAreaM2}
                 unit="m²"
                 description="9 × 6 metros"
+              />
+              <MetricCard
+                label="Área doble cara"
+                value={keyMetrics.doubleFaceAreaM2}
+                unit="m²"
+                description="Superficie vendible"
               />
               <MetricCard
                 label="Pendiente del terreno"
@@ -258,4 +264,3 @@ export default function HomePage() {
     </>
   )
 }
-

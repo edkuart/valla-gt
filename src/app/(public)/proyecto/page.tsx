@@ -50,9 +50,10 @@ export default function ProyectoPage() {
 
       {/* Key metrics */}
       <SectionReveal delay={0.08}>
-        <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           <MetricCard label="Altura" value={keyMetrics.heightMeters} unit="m" />
-          <MetricCard label="Área" value={keyMetrics.faceAreaM2} unit="m²" />
+          <MetricCard label="Área por cara" value={keyMetrics.faceAreaM2} unit="m²" />
+          <MetricCard label="Área doble cara" value={keyMetrics.doubleFaceAreaM2} unit="m²" />
           <MetricCard label="Pendiente" value={`~${keyMetrics.slopeAngleDeg}`} unit="°" />
           <MetricCard
             label="Inversión estimada"

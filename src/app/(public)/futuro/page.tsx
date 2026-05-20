@@ -9,25 +9,29 @@ import type { Metadata } from "next"
 export const metadata: Metadata = { title: "Visión Futura LED-Ready" }
 
 const COMPARISON = [
-  { aspect: "Inversión inicial", current: "Q 180K – 230K", future: "Q 460K – 640K adicionales" },
-  { aspect: "Tipo de publicidad", current: "Impresión en vinilo estático", future: "Contenido digital dinámico (video, animación)" },
-  { aspect: "Cambio de arte", current: "Manual, 48–72h de tiempo de producción", future: "Remoto, instantáneo (API/software)" },
-  { aspect: "Precio de tarifa mensual", current: "Q 8K – 16K / mes", future: "Q 25K – 60K+ / mes (múltiples anunciantes, rotación)" },
-  { aspect: "Anunciantes simultáneos", current: "1 anunciante exclusivo", future: "4–8 anunciantes en rotación programada" },
-  { aspect: "Consumo eléctrico", current: "~1.2 – 1.8 kW (iluminación)", future: "~15 – 25 kW (pantalla LED completa)" },
-  { aspect: "Mantenimiento", current: "Bajo — limpieza y revisión eléctrica", future: "Moderado — módulos LED, controladores, conectividad" },
-  { aspect: "Tiempo de recuperación", current: "18 – 36 meses", future: "6 – 18 meses (con ocupación alta)" },
+  { aspect: "Inversión inicial", current: "Q 185K – 245K", future: "Q 207K – 324K adicionales (solo módulos LED + instalación)" },
+  { aspect: "Tipo de publicidad", current: "Impresión en vinilo estático", future: "Contenido digital dinámico (video, animación, programación horaria)" },
+  { aspect: "Cambio de arte", current: "Manual, 48–72h producción + instalación", future: "Remoto, instantáneo desde software de gestión" },
+  { aspect: "Tarifa mensual estimada", current: "Q 8K – 16K / mes (1 anunciante)", future: "Q 30K – 60K / mes (4–8 anunciantes en rotación)" },
+  { aspect: "Anunciantes simultáneos", current: "1 anunciante exclusivo", future: "4–8 anunciantes en rotación de 15 seg / spot" },
+  { aspect: "Costo de módulos LED (54 m²)", current: "No aplica", future: "USD 15,000 – 23,000 (P10 exterior, precio de fábrica 2025)" },
+  { aspect: "Consumo eléctrico", current: "~1.2 – 1.8 kW (iluminación LED)", future: "~15 – 25 kW (pantalla LED completa)" },
+  { aspect: "Costo eléctrico mensual", current: "~Q 600 – 900 / mes", future: "~Q 3,500 – 5,500 / mes" },
+  { aspect: "Mantenimiento anual", current: "Q 2,000 – 4,000 / año", future: "Q 8,000 – 15,000 / año (módulos + controladores)" },
+  { aspect: "Vida útil", current: "> 20 años (estructura)", future: "8 – 12 años (módulos LED, estructura reutilizable)" },
+  { aspect: "Payback estimado", current: "18 – 36 meses", future: "36 – 54 meses desde conversión (con ocupación alta)" },
 ]
 
 const LED_PREP_STATUS = [
-  { component: "Cimentación", status: "prepared", detail: "Diseñada para 2.5× la carga actual. Soporta peso total de pantalla LED." },
-  { component: "Marco estructural posterior", status: "prepared", detail: "Puntos de anclaje para módulos LED integrados en diseño original." },
-  { component: "Canalización eléctrica", status: "prepared", detail: "Conduit metálico 2\" instalado. Ruta libre para cableado de alta potencia." },
-  { component: "Tablero eléctrico", status: "prepared", detail: "Capacidad 100A trifásico con espacio para circuitos adicionales." },
-  { component: "Área de equipamiento técnico", status: "prepared", detail: "Gabinete posterior reservado para controladores LED, fuentes y conectividad." },
-  { component: "Módulos LED", status: "future", detail: "No incluidos en Fase 1. Se evalúan Absen, Unilumin, y distribuidores locales." },
-  { component: "Controladora de contenido", status: "future", detail: "Sistema de gestión de contenido y programación de anunciantes." },
-  { component: "Conectividad (fiber/LTE)", status: "future", detail: "Conexión para control remoto de contenido." },
+  { component: "Cimentación", status: "prepared", detail: "Diseñada para 1.5× la carga de pantalla LED de 54 m². Costo incremental < 20% de la zapata." },
+  { component: "Marco estructural posterior", status: "prepared", detail: "Puntos de anclaje para gabinetes LED integrados en diseño original sin soldadura adicional." },
+  { component: "Acometida eléctrica trifásica", status: "prepared", detail: "30 kVA instalados. Una pantalla LED P10 de 54 m² consume ~15–18 kW. Sin cambio de acometida." },
+  { component: "Canalización conduit 2\"", status: "prepared", detail: "Rutas pre-instaladas para cableado de alta potencia. Sin abrir muros al convertir." },
+  { component: "Tablero 100A trifásico", status: "prepared", detail: "12 circuitos GFCI con espacio de expansión para circuitos LED adicionales." },
+  { component: "Área de equipamiento técnico", status: "prepared", detail: "Gabinete 1.2 × 0.8 m reservado para controladores LED, fuentes y conectividad." },
+  { component: "Módulos LED P10 exteriores", status: "future", detail: "54 m² × USD 280–420/m² = USD 15,120–22,680. Proveedores locales: Corpotek GT, LEDEC Group." },
+  { component: "Controladora de contenido", status: "future", detail: "Sistema de gestión de contenido y programación de spots por anunciante." },
+  { component: "Conectividad (fiber/LTE)", status: "future", detail: "Para control remoto de contenido y monitoreo en tiempo real." },
 ]
 
 export default function FuturoPage() {
