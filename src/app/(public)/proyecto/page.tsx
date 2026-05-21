@@ -2,6 +2,7 @@ import { Disclaimer } from "@/components/ui/Disclaimer"
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import { MetricCard } from "@/components/primitives/MetricCard"
 import { SectionReveal, StaggeredList } from "@/components/primitives/SectionReveal"
+import { TerrainMapPreview } from "@/components/sections/terrain/TerrainMapPreview"
 import { StatusBadge } from "@/components/primitives/StatusBadge"
 import { PROJECT } from "@/data/project"
 import { formatRange } from "@/lib/utils"
@@ -46,6 +47,10 @@ export default function ProyectoPage() {
             <p className="font-mono text-sm text-text-primary">{PROJECT.operationalTarget}</p>
           </div>
         </div>
+      </SectionReveal>
+
+      <SectionReveal delay={0.06}>
+        <TerrainMapPreview compact className="mb-16" />
       </SectionReveal>
 
       {/* Key metrics */}

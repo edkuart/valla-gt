@@ -1,4 +1,5 @@
 import { SectionReveal } from "@/components/primitives/SectionReveal"
+import { TerrainMapPreview } from "@/components/sections/terrain/TerrainMapPreview"
 import { RESEARCH_ARTICLES } from "@/data/research"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -838,6 +839,12 @@ Así el proyecto gana autonomía y seguridad sin sobredimensionar desde el día 
 `,
 }
 
+const MAP_RELEVANT_ARTICLES = new Set([
+  "ubicacion-km194-rn1-salcaja",
+  "cimentacion-terreno-inclinado",
+  "normativa-legal-guatemala",
+])
+
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params
   const article = RESEARCH_ARTICLES.find((a) => a.slug === slug)
@@ -876,6 +883,12 @@ export default async function ArticlePage({ params }: Props) {
           )}
         </div>
       </SectionReveal>
+
+      {MAP_RELEVANT_ARTICLES.has(slug) && (
+        <SectionReveal delay={0.04}>
+          <TerrainMapPreview compact className="mb-10" />
+        </SectionReveal>
+      )}
 
       <SectionReveal delay={0.06}>
         <div className="space-y-4">

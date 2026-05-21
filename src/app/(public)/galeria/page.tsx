@@ -1,5 +1,6 @@
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import { SectionReveal } from "@/components/primitives/SectionReveal"
+import { TerrainMapPreview } from "@/components/sections/terrain/TerrainMapPreview"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = { title: "Galería" }
@@ -98,6 +99,23 @@ export default function GaleriaPage() {
           <p className="font-mono text-xs text-text-muted">
             Galería en preparación — el contenido visual se irá publicando conforme avancen las fases de planificación y construcción.
           </p>
+        </div>
+      </SectionReveal>
+
+      <SectionReveal delay={0.05}>
+        <div className="mb-14">
+          <div className="mb-5 flex items-baseline gap-3">
+            <span className="font-mono text-xs text-text-muted">00</span>
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-text-muted">
+                Ubicación satelital
+              </p>
+              <p className="text-xs text-text-muted mt-0.5">
+                Preview real del terreno y su contexto inmediato sobre la RN-1
+              </p>
+            </div>
+          </div>
+          <TerrainMapPreview compact />
         </div>
       </SectionReveal>
 

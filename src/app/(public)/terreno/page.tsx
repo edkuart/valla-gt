@@ -3,6 +3,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader"
 import { DataTable } from "@/components/ui/DataTable"
 import { MetricCard } from "@/components/primitives/MetricCard"
 import { SectionReveal } from "@/components/primitives/SectionReveal"
+import { TerrainMapPreview } from "@/components/sections/terrain/TerrainMapPreview"
 import { TERRAIN } from "@/data/terrain"
 import { formatRange } from "@/lib/utils"
 import type { Metadata } from "next"
@@ -19,6 +20,10 @@ export default function TerrenoPage() {
           description={TERRAIN.overview.description}
         />
         <Disclaimer text={TERRAIN.disclaimer} className="mb-12" />
+      </SectionReveal>
+
+      <SectionReveal delay={0.03}>
+        <TerrainMapPreview className="mb-12" />
       </SectionReveal>
 
       {/* Location strip */}
